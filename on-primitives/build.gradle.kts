@@ -18,9 +18,7 @@ repositories {
 dependencies {
     // Use JUnit test framework.
     testImplementation(libs.junit)
-
-    // This dependency is used by the application.
-    // implementation(libs.guava)
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
@@ -34,3 +32,15 @@ java {
 //     // Define the main class for the application.
 //     mainClass = "org.example.App"
 // }
+
+tasks.named<Test>("test") {
+    // Use JUnit Platform for unit tests.
+    useJUnitPlatform()
+
+    // show standard out and standard error of the test JVM(s) on the console
+    testLogging {
+        setShowStackTraces(false)
+        events("failed", "passed")
+        setExceptionFormat("full")
+    }
+}
