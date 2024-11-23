@@ -41,12 +41,13 @@ class Fibonacci {
     private static int nested(int n, int s) {
         return (n == 0) ? n : nestedBC(n) ? 1 + s : nested(n - 1, s + nested(n - 2, 0));
     }
+
     private static int A(int n) {
-        return (n == 0) ? 0 : B(n - 1) + A(n - 1);
+        return (n == 1) ? 0 : B(n - 1) + A(n - 1);
     }
 
     private static int B(int n) {
-        return (n == 0) ? 1 : A(n - 1);
+        return (n == 1) ? 1 : A(n - 1);
     }
 
     private static boolean evalBC(int n) {
